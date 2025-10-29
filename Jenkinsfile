@@ -2,7 +2,7 @@ pipeline{
     agent any
     environment{
         PYTHON="C:\\Users\\sanyu\\AppData\\Local\\Programs\\Python\\Python313\\python.exe"
-        APP_TOKEN=credentials("APP_TOKEN")
+        APP_TOKEN=credentials("1234")
     }
     stages{
         stage("Checkout code"){
