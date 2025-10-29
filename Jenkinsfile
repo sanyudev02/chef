@@ -2,6 +2,7 @@ pipeline{
     agent any
     environment{
         PYTHON="C:\\Users\\sanyu\\AppData\\Local\\Programs\\Python\\Python313\\python.exe"
+        APP_TOKEN=credentials("APP_TOKEN")
     }
     stages{
         stage("Checkout code"){
@@ -17,6 +18,7 @@ pipeline{
         }
         stage("Extract data"){
             steps{
+                bat "SET TOKEN=${env.APP_TOKEN}"
                 bat "${env.PYTHON} extract_data.py"
             }
 
