@@ -7,19 +7,21 @@ pipeline{
     stages{
         stage("Checkout code"){
             steps{
-                checkout scm
+                git url:'https://github.com/sanyudev02/chef.git',branch:'main'
             }
         }
         stage("Install dependencies"){
             steps{
-                bat "${env.PYTHON} -m pip install -r requirements.txt"
+                bat "%PYTHON% -m pip install -r requirements.txt"
             }
 
         }
         stage("Extract data"){
             steps{
-                bat "SET TOKEN=${env.APP_TOKEN}"
-                bat "${env.PYTHON} extract_data.py"
+                bat """
+                SET TOKEN=${env.APP_TOKEN}"
+                ${env.PYTHON} extract_data.py
+                """
             }
 
         }
